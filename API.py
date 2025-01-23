@@ -26,13 +26,17 @@ def sing_in():
 def all_doc():
     query="select * from Documents"
     data=connect_db(query)
-    # return data
-    return "doc end"
+    print(data)
+    return data
+    # return "doc end"
 
 @app.route("/api/v1/Document/{documentId}/Comments",methods=["GET","POST"])
 @jwt_required()
 def one_doc():
-    return "Hello world 2"
+    if request.method=="GET":
+        return
+    if request.method=="POST":
+        return
 
 if __name__=="__main__":
     app.run(debug=True,port=1000,host="0.0.0.0")
