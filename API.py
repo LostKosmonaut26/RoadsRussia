@@ -30,12 +30,18 @@ def all_doc():
     return data
     # return "doc end"
 
-@app.route("/api/v1/Document/{documentId}/Comments",methods=["GET","POST"])
+@app.route("/api/v1/Document/<documentId>/Comments",methods=["GET","POST"])
 @jwt_required()
-def one_doc():
+def one_doc(documentId):
+
     if request.method=="GET":
-        return
+        query=f"Select * From Comment where Id={documentId}"
+        data=connect_db(query)
+        print(data)
+        return data
+    
     if request.method=="POST":
+        
         return
 
 if __name__=="__main__":
